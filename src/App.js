@@ -12,7 +12,7 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    if (localStorage.components) {
+    if (localStorage.contacts) {
       this.getLocalContacts();
     }
   }
