@@ -4,25 +4,18 @@ import { v4 as uuidv4 } from "uuid";
 import { Input, Label, Button, Form } from "./ContactForm.styled";
 
 export default class ContactForm extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    name: "",
+    number: "",
+  };
 
-    this.state = {
-      name: "",
-      number: "",
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(evt) {
+  handleChange = (evt) => {
     const { name } = evt.target;
 
     this.setState({ [name]: evt.target.value });
-  }
+  };
 
-  handleSubmit(evt) {
+  handleSubmit = (evt) => {
     const { name, number } = this.state;
     const id = uuidv4();
     const contact = { id, name, number };
@@ -45,11 +38,11 @@ export default class ContactForm extends Component {
       this.props.addContact(contact);
       this.clear();
     }
-  }
+  };
 
-  clear() {
+  clear = () => {
     this.setState({ name: "", number: "" });
-  }
+  };
 
   render() {
     const { name, number } = this.state;
